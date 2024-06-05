@@ -23,6 +23,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.newera.databinding.ActivityMain1Binding;
 import com.google.android.material.navigation.NavigationBarView;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+
+
 
 public class MainActivity1 extends AppCompatActivity {
 
@@ -43,18 +46,14 @@ public class MainActivity1 extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-//floating button fab
-//        binding.appBarMain1.fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null)
-//                        .setAnchorView(R.id.fab).show();
-//            }
-//        });
 
+//        DrawerLayout drawer = binding.drawerLayout;
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, binding.appBarMain1.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
-        DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
