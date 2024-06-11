@@ -3,12 +3,16 @@ package com.example.newera;
 import java.util.List;
 
 public class HomePageModel {
+
     public static final int BANNER_SLIDER = 0;
     public static final int STRIP_AD_BANNER = 1;
     public static final int HORIZONTAL_PRODUCT_VIEW = 2;
     public static final int GRID_PRODUCT_VIEW = 3;
+
     private int type;
-    //  **************************** banner slide ****************************
+
+//////////////////////////  Banner Slider   //////////////////////
+
     private List<SliderModel> sliderModelList;
 
     public HomePageModel(int type, List<SliderModel> sliderModelList) {
@@ -28,39 +32,38 @@ public class HomePageModel {
         return sliderModelList;
     }
 
+    //////////////////////////  Banner Slider  END //////////////////////
+
+
     public void setSliderModelList(List<SliderModel> sliderModelList) {
         this.sliderModelList = sliderModelList;
     }
-    //  ****************************banner slide****************************
-
-    //        ****************************Strip Ad****************************
+    //////////////////////////  Strip AD   //////////////////////
     private int resource;
     private String backgroundColor;
 
-    public HomePageModel(int type, int resource, String backgroundColor) {
+//    public HomePageModel(int type, int resource, String backgroundColor) {
+    public HomePageModel(int type, int resource) {
         this.type = type;
         this.resource = resource;
-        this.backgroundColor = backgroundColor;
+//        this.backgroundColor = backgroundColor;
     }
-
     public int getResource() {
         return resource;
     }
-
     public void setResource(int resource) {
         this.resource = resource;
     }
+//    public String getBackgroundColor() {
+//        return backgroundColor;
+//    }
+//    public void setBackgroundColor(String backgroundColor) {
+//        this.backgroundColor = backgroundColor;
+//    }
+    //////////////////////////  Strip AD  //////////////////////
 
-    public String getBackgroundColor() {
-        return backgroundColor;
-    }
+    //////////////////////////  HORIZONTAL PRODUCT LAYOUT && GRID PRODUCT lAYOUT //////////////////////
 
-    public void setBackgroundColor(String backgroundColor) {
-        this.backgroundColor = backgroundColor;
-    }
-    //        ****************************Strip Ad****************************
-
-    //        **************************** HORIZONTAL PRODUCT LAYOUT && GRID PRODUCT LAYOUT ****************************
     private String title;
     private List<HorizontalProductScrollModel> horizontalProductScrollModelList;
 
@@ -85,7 +88,7 @@ public class HomePageModel {
     public void setHorizontalProductScrollModelList(List<HorizontalProductScrollModel> horizontalProductScrollModelList) {
         this.horizontalProductScrollModelList = horizontalProductScrollModelList;
     }
-    //        **************************** HORIZONTAL PRODUCT LAYOUT && GRID PRODUCT LAYOUT ****************************
+//////////////////////////  HORIZONTAL PRODUCT LAYOUT END  && GRID PRODUCT lAYOUT   //////////////////////
 
 
 

@@ -18,10 +18,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_recyclerview">
+        app:layout_constraintTop_toBottomOf="@+id/category_recyclerview"
+        tools:visibility="gone">
 
         <LinearLayout
             android:id="@+id/scrollView2"
@@ -32,7 +35,7 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="259dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <include layout="@layout/horizontal_scroll_layout" />
@@ -67,15 +70,16 @@
         </LinearLayout>
     </ScrollView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_page_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_recyclerview" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--<androidx.recyclerview.widget.RecyclerView-->
-<!--android:id="@+id/home_page_recyclerview"-->
-<!--android:layout_width="395dp"-->
-<!--android:layout_height="457dp"-->
-<!--android:layout_marginStart="1dp"-->
-<!--android:layout_marginTop="1dp"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toBottomOf="@+id/category_recyclerview" />-->
 

@@ -18,9 +18,9 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_view_all_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_scroll_layout_btn" />
+        app:layout_constraintTop_toTopOf="@+id/horizontal_scroll_layout_view_all_btn" />
 
     <Button
         android:id="@+id/horizontal_scroll_layout_view_all_btn"

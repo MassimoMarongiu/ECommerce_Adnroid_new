@@ -2,6 +2,40 @@ https://www.youtube.com/watch?v=HgsZlFbDEXc&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjN
 
 da fare
 login register
-multiple layout
-https://www.youtube.com/watch?v=2PrmPBQprrc&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=19
-https://www.youtube.com/watch?v=HalO6rOnvKI&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=20
+https://www.youtube.com/watch?v=lpiBuNQDkPs&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=22
+
+
+branches github
+Crea un nuovo branch:
+
+Esegui il comando per spostarti sul branch di base (ad esempio main o develop):
+bash
+Copia codice
+git checkout main
+Crea un nuovo branch:
+bash
+Copia codice
+git checkout -b nome_del_nuovo_branch
+Verifica che il nuovo branch sia stato creato e selezionato:
+bash
+Copia codice
+git branch
+Dovresti vedere un asterisco (*) accanto al nome del nuovo branch.
+Fai modifiche nel nuovo branch: Procedi con le modifiche al codice necessarie nel nuovo branch.
+
+Committa le modifiche:
+
+Aggiungi i file modificati al commit:
+bash
+Copia codice
+git add .
+Crea un commit con un messaggio descrittivo:
+bash
+Copia codice
+git commit -m "Descrizione delle modifiche"
+Pushare il branch:
+
+Esegui il comando per pushare il branch al repository remoto:
+bash
+Copia codice
+git push -u origin nome_del_nuovo_branch

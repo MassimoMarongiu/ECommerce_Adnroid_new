@@ -47,35 +47,35 @@ public class HomeFragment extends Fragment {
     //   ****************************category****************************
 
     //  ****************************banner slide****************************
-    private SliderAdapter sliderAdapter;
-    private ViewPager bannerSliderViewPager;
-    private List<SliderModel> sliderModelList;
-    private int currentPage = 2;
-    private Timer timer;
-    final private long DELAY_TIME = 3000;
-    final private long PERIOD_TIME = 3000;
+//    private SliderAdapter sliderAdapter;
+//    private ViewPager bannerSliderViewPager;
+//    private List<SliderModel> sliderModelList;
+//    private int currentPage = 2;
+//    private Timer timer;
+//    final private long DELAY_TIME = 3000;
+//    final private long PERIOD_TIME = 3000;
     //        ****************************banner slide****************************
 
     //        ****************************strip ad layout****************************
-    private ImageView stripAdImage;
-    private ConstraintLayout stripAdContainer;
+//    private ImageView stripAdImage;
+//    private ConstraintLayout stripAdContainer;
     //        ****************************strip ad layout****************************
 
     //        **************************** horizontal product layout****************************
-    private TextView horizontalLayoutTitle;
-    private Button horizontalLayoutViewAllBtn;
-    private RecyclerView horizontalReciclerView;
-
-    private HorizontalProductScrollAdapter horizontalProductScrollAdapter;
+//    private TextView horizontalLayoutTitle;
+//    private Button horizontalLayoutViewAllBtn;
+//    private RecyclerView horizontalReciclerView;
+//
+//    private HorizontalProductScrollAdapter horizontalProductScrollAdapter;
     //        **************************** horizontal product layout****************************
 
     //        **************************** Grid product layout ****************************
-    private TextView gridLayoutTitle;
-    private Button gridLayoutViewAllBtn;
-    private GridView gridView;
+//    private TextView gridLayoutTitle;
+//    private Button gridLayoutViewAllBtn;
+//    private GridView gridView;
 
     //        **************************** Grid product layout ****************************
-
+private RecyclerView homePageReciclerView;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -137,9 +137,9 @@ public class HomeFragment extends Fragment {
 //        ****************************CATEGORY****************************
 
 //        ****************************banner slide****************************
-        bannerSliderViewPager = view.findViewById(R.id.banner_slider_view_pager);
+//        ViewPager bannerSliderViewPager = view.findViewById(R.id.banner_slider_view_pager);
 
-        sliderModelList = new ArrayList<SliderModel>();
+        List<SliderModel> sliderModelList = new ArrayList<SliderModel>();
 
         sliderModelList.add(new SliderModel(R.drawable.home_red, "#077AE4"));
         sliderModelList.add(new SliderModel(R.drawable.custom_error_icon, "#077AE4"));
@@ -156,61 +156,61 @@ public class HomeFragment extends Fragment {
         sliderModelList.add(new SliderModel(R.drawable.custom_error_icon, "#077AE4"));
         sliderModelList.add(new SliderModel(R.drawable.green_email, "#077AE4"));
         sliderModelList.add(new SliderModel(R.drawable.red_email, "#077AE4"));
-
-        sliderAdapter = new SliderAdapter(sliderModelList);
-        bannerSliderViewPager.setAdapter(sliderAdapter);
-        bannerSliderViewPager.setClipToPadding(false);
-        bannerSliderViewPager.setPageMargin(20);
-
-        bannerSliderViewPager.setCurrentItem(currentPage);
-
-        ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                if (state == ViewPager.SCROLL_STATE_IDLE) {
-                    pageLooper();
-                }
-            }
-        };
-        bannerSliderViewPager.addOnPageChangeListener(onPageChangeListener);
-
-        startBannerSlideShow();
-
-        bannerSliderViewPager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                pageLooper();
-                stopBannerSLideShow();
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    startBannerSlideShow();
-                }
-                return false;
-            }
-        });
+//
+//        SliderAdapter sliderAdapter = new SliderAdapter(sliderModelList);
+//        bannerSliderViewPager.setAdapter(sliderAdapter);
+//        bannerSliderViewPager.setClipToPadding(false);
+//        bannerSliderViewPager.setPageMargin(20);
+//
+//        bannerSliderViewPager.setCurrentItem(currentPage);
+//
+//        ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                currentPage = position;
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//                if (state == ViewPager.SCROLL_STATE_IDLE) {
+//                    pageLooper();
+//                }
+//            }
+//        };
+//        bannerSliderViewPager.addOnPageChangeListener(onPageChangeListener);
+//
+//        startBannerSlideShow();
+//
+//        bannerSliderViewPager.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                pageLooper();
+//                stopBannerSLideShow();
+//                if (event.getAction() == MotionEvent.ACTION_UP) {
+//                    startBannerSlideShow();
+//                }
+//                return false;
+//            }
+//        });
 
 //        ****************************banner slide****************************
 
 //        ****************************Strip Ad****************************
-        stripAdImage = view.findViewById(R.id.strip_ad_image);
-        stripAdContainer = view.findViewById(R.id.strip_ad_container);
-
-        stripAdImage.setImageResource(R.drawable.banner2);
-        stripAdContainer.setBackgroundColor(Color.parseColor("#000000"));
+//        stripAdImage = view.findViewById(R.id.strip_ad_image);
+//        stripAdContainer = view.findViewById(R.id.strip_ad_container);
+//
+//        stripAdImage.setImageResource(R.drawable.banner2);
+//        stripAdContainer.setBackgroundColor(Color.parseColor("#000000"));
 //        ****************************Strip Ad****************************
 
 //        **************************** horizontal product layout****************************
-        horizontalLayoutTitle = view.findViewById(R.id.horizontal_scroll_layout_title);
-        horizontalLayoutViewAllBtn = view.findViewById(R.id.horizontal_scroll_layout_view_all_btn);
-        horizontalReciclerView = view.findViewById(R.id.horizontal_scroll_layout_reciclerView);
+//        horizontalLayoutTitle = view.findViewById(R.id.horizontal_scroll_layout_title);
+//        horizontalLayoutViewAllBtn = view.findViewById(R.id.horizontal_scroll_layout_view_all_btn);
+//        horizontalReciclerView = view.findViewById(R.id.horizontal_scroll_layout_reciclerView);
 
         List<HorizontalProductScrollModel> horizontalProductScrollModelList = new ArrayList<>();
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao1, "RedMi K", "Sd 425 Processor", "€ 250,00"));
@@ -223,65 +223,83 @@ public class HomeFragment extends Fragment {
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao5, "Nokia 3321", "Sd 225 Processor", "€ 200,00"));
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.mipmap.logo, "Home", "", ""));
 
-        horizontalProductScrollAdapter = new HorizontalProductScrollAdapter(horizontalProductScrollModelList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-
-        horizontalReciclerView.setLayoutManager(linearLayoutManager);
-        horizontalReciclerView.setAdapter(horizontalProductScrollAdapter);
-
-        horizontalProductScrollAdapter.notifyDataSetChanged();
+//       HorizontalProductScrollAdapter horizontalProductScrollAdapter = new HorizontalProductScrollAdapter(horizontalProductScrollModelList);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+//        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+//
+//        horizontalReciclerView.setLayoutManager(linearLayoutManager);
+//        horizontalReciclerView.setAdapter(horizontalProductScrollAdapter);
+//
+//        horizontalProductScrollAdapter.notifyDataSetChanged();
 //        **************************** horizontal product layout****************************
 
 //        **************************** Grid product layout ****************************
-        gridLayoutTitle = view.findViewById(R.id.grid_product_layout_title);
-        gridLayoutViewAllBtn = view.findViewById(R.id.grid_product_layout_btn);
-        gridView = view.findViewById(R.id.grid_product_layout_grid_view);
-
-        gridView.setAdapter(new GridProductViewAdapter(horizontalProductScrollModelList));
+//        TextView gridLayoutTitle = view.findViewById(R.id.grid_product_layout_title);
+//        Button gridLayoutViewAllBtn = view.findViewById(R.id.grid_product_layout_btn);
+//        GridView gridView = view.findViewById(R.id.grid_product_layout_grid_view);
+//
+//        gridView.setAdapter(new GridProductViewAdapter(horizontalProductScrollModelList));
 
 //        **************************** Grid product layout ****************************
 
+        ///////////////////////////////////////////////////////
+        homePageReciclerView = view.findViewById(R.id.home_page_recyclerview);
+        LinearLayoutManager homePageLayoutManager = new LinearLayoutManager(getContext());
+        homePageLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        homePageReciclerView.setLayoutManager(homePageLayoutManager);
 
+        List<HomePageModel> homePageModelList = new ArrayList<>();
+        homePageModelList.add(new HomePageModel(0,sliderModelList));
+        homePageModelList.add(new HomePageModel(1, R.drawable.banner2 ));
+        homePageModelList.add(new HomePageModel(2,"Deals of the day",horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(3,"Deals of the day",horizontalProductScrollModelList));
+//        homePageModelList.add(new HomePageModel(1,R.drawable.banner2,"#ffff00"));
+        homePageModelList.add(new HomePageModel(0,sliderModelList));
+//        homePageModelList.add(new HomePageModel(1,R.drawable.banner2,"#ff0000"));
 
+        HomePageAdapter adapter= new HomePageAdapter(homePageModelList);
+        homePageReciclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        ///////////////////////////////////////////////////////
         return view;
     }
 
     //        ****************************banner slide****************************
-    private void pageLooper() {
-        if (currentPage == sliderModelList.size() - 2) {
-            currentPage = 2;
-            bannerSliderViewPager.setCurrentItem(currentPage, false);
-        }
-        if (currentPage == 1) {
-            currentPage = sliderModelList.size() - 3;
-            bannerSliderViewPager.setCurrentItem(currentPage, false);
-        }
-    }
-
-    private void startBannerSlideShow() {
-        Handler handler = new Handler();
-        Runnable update = new Runnable() {
-            @Override
-            public void run() {
-                if (currentPage >= sliderModelList.size()) {
-                    currentPage = 1;
-                }
-                bannerSliderViewPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(update);
-            }
-        }, DELAY_TIME, PERIOD_TIME);
-    }
-
-    private void stopBannerSLideShow() {
-        timer.cancel();
-    }
+//    private void pageLooper() {
+//        if (currentPage == sliderModelList.size() - 2) {
+//            currentPage = 2;
+//            bannerSliderViewPager.setCurrentItem(currentPage, false);
+//        }
+//        if (currentPage == 1) {
+//            currentPage = sliderModelList.size() - 3;
+//            bannerSliderViewPager.setCurrentItem(currentPage, false);
+//        }
+//    }
+//
+//    private void startBannerSlideShow() {
+//        Handler handler = new Handler();
+//        Runnable update = new Runnable() {
+//            @Override
+//            public void run() {
+//                if (currentPage >= sliderModelList.size()) {
+//                    currentPage = 1;
+//                }
+//                bannerSliderViewPager.setCurrentItem(currentPage++, true);
+//            }
+//        };
+//        timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                handler.post(update);
+//            }
+//        }, DELAY_TIME, PERIOD_TIME);
+//    }
+//
+//    private void stopBannerSLideShow() {
+//        timer.cancel();
+//    }
 
     //        ****************************banner slide****************************
 

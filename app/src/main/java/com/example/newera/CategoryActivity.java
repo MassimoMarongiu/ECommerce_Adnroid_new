@@ -1,109 +1,104 @@
 package com.example.newera;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toolbar;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.newera.databinding.ActivityCategoryBinding;
+import com.example.newera.databinding.ActivityMain1Binding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class CategoryActivity extends AppCompatActivity {
-
     private RecyclerView categoryRecyclerView;
     private ActivityCategoryBinding binding;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_category);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
-//        binding = ActivityCategoryBinding.inflate(getLayoutInflater());
-//        setSupportActionBar(binding.appBarLayout.findViewById(R.id.app_bar_main1));
-//        setContentView(binding.getRoot());
+        binding = ActivityCategoryBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.appBarLayout);
-//        setSupportActionBar(binding.toolbar);
-
+        setSupportActionBar(binding.toolbar);
         String title = getIntent().getStringExtra("CategoryName");
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         categoryRecyclerView = findViewById(R.id.category_recyclerview);
 
-//        ****************************  BANNER SLIDER ****************************
 
-        List<SliderModel>sliderModelList = new ArrayList<SliderModel>();
-
-        sliderModelList.add(new SliderModel(R.drawable.home_red, "#077AE4"));
-        sliderModelList.add(new SliderModel(R.drawable.custom_error_icon, "#077AE4"));
-        sliderModelList.add(new SliderModel(R.drawable.green_email, "#077AE4"));
-
-        sliderModelList.add(new SliderModel(R.drawable.red_email, "#077AE4"));
-        sliderModelList.add(new SliderModel(R.mipmap.logo, "#077AE4"));
-        sliderModelList.add(new SliderModel(R.mipmap.ic_launcher, "#077AE4"));
-        sliderModelList.add(new SliderModel(R.mipmap.cart, "#077AE4"));
-        sliderModelList.add(new SliderModel(R.mipmap.profile_placeholder, "#077AE4"));
-        sliderModelList.add(new SliderModel(R.drawable.home_red, "#077AE4"));
+////////////////////////          Banner Slider         //////////////////////
 
 
-        sliderModelList.add(new SliderModel(R.drawable.custom_error_icon, "#077AE4"));
-        sliderModelList.add(new SliderModel(R.drawable.green_email, "#077AE4"));
-        sliderModelList.add(new SliderModel(R.drawable.red_email, "#077AE4"));
+        List<SliderModel> sliderModelList = new ArrayList<SliderModel>();
 
-//        **************************** BANNER SLIDER****************************
+        sliderModelList.add(new SliderModel(R.drawable.home_icon_red, "#007AE4"));
+        sliderModelList.add(new SliderModel(R.drawable.custom_error_icon, "#007AE4"));
 
-//        **************************** HORIZONTAL PRODUCT LAYOUT ****************************
+        sliderModelList.add(new SliderModel(R.drawable.green_email, "#007AE4"));//rivedere
+        sliderModelList.add(new SliderModel(R.drawable.redemail, "#007AE4"));//rivedere
+//        sliderModelList.add(new SliderModel(R.drawable.logo));
+//        sliderModelList.add(new SliderModel(R.drawable.ic_launcher_foreground));
+        sliderModelList.add(new SliderModel(R.drawable.cart_foreground, "#007AE4"));
+//        sliderModelList.add(new SliderModel(R.drawable.profile_placeholder_foreground));
+        sliderModelList.add(new SliderModel(R.drawable.home_icon_red, "#007AE4"));
+        sliderModelList.add(new SliderModel(R.drawable.custom_error_icon, "#007AE4"));
+
+        sliderModelList.add(new SliderModel(R.drawable.green_email, "#007AE4"));//rivedere
+        sliderModelList.add(new SliderModel(R.drawable.redemail, "#007AE4"));//rivedere
+
+
+///////////////////////          Banner Slider end         //////////////////////
+
+///////////////////////    horizontal product Layout deals of the day         //////////////////////
 
         List<HorizontalProductScrollModel> horizontalProductScrollModelList = new ArrayList<>();
-        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao1, "RedMi K", "Sd 425 Processor", "€ 250,00"));
-        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao3, "Samsung Mr4", "Sd 625 Processor", "€ 300,00"));
-        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao4, "I-Phone 20", "Sd 1425 Processor", "€ 1450,00"));
-        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao5, "Nokia 3321", "Sd 225 Processor", "€ 200,00"));
-        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao1, "Oppo", "Sd 825 Processor", "€ 720,00"));
-        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao3, "Samsung Mr4", "Sd 625 Processor", "€ 300,00"));
-        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao4, "I-Phone 20", "Sd 1425 Processor", "€ 1450,00"));
-        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao5, "Nokia 3321", "Sd 225 Processor", "€ 200,00"));
-        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.mipmap.logo, "Home", "", ""));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.ciao3, "Redmi 5A", "SD 625 Processor", "RS.5999/-"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.home_icon_red, "Redmi 5A", "SD 625 Processor", "RS.5999/-"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.cart_foreground, "Redmi 5A", "SD 625 Processor", "RS.5999/-"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.custom_error_icon, "Redmi 5A", "SD 625 Processor", "RS.5999/-"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.green_email, "Redmi 5A", "SD 625 Processor", "RS.5999/-"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.redemail, "Redmi 5A", "SD 625 Processor", "RS.5999/-"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.cart_foreground, "Redmi 5A", "SD 625 Processor", "RS.5999/-"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.custom_error_icon, "Redmi 5A", "SD 625 Processor", "RS.5999/-"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.home_icon_red, "Redmi 5A", "SD 625 Processor", "RS.5999/-"));
 
-//        **************************** HORIZONTAL PRODUCT LAYOUT****************************
+///////////////////////      horizontal product Layout end  deals of the day    //////////////////////
 
-//        ********************************************************
-//        RecyclerView testing = view.findViewById(R.id.home_page_reciclerview);
-        LinearLayoutManager testingLinearLayoutManager = new LinearLayoutManager(this);
-        testingLinearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        categoryRecyclerView.setLayoutManager(testingLinearLayoutManager);
+
+////////////////////        RecyclerView testing    ///////////////////////
+////////////////////       restituisce più righe del banner e delle attivta    ///////////////////////
+
+        LinearLayoutManager testingLayoutManager = new LinearLayoutManager(this);
+        testingLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        categoryRecyclerView.setLayoutManager(testingLayoutManager);
 
         List<HomePageModel> homePageModelList = new ArrayList<>();
-        homePageModelList.add(new HomePageModel(0,sliderModelList));
-        homePageModelList.add(new HomePageModel(1,R.drawable.banner1,"#000000"));
-        homePageModelList.add(new HomePageModel(2,"Deals of the Day",horizontalProductScrollModelList));
-        homePageModelList.add(new HomePageModel(3,"Deals of the Day",horizontalProductScrollModelList));
-        homePageModelList.add(new HomePageModel(0,sliderModelList));
-        homePageModelList.add(new HomePageModel(1,R.drawable.banner2,"#ffff00"));
+        homePageModelList.add(new HomePageModel(0, sliderModelList));
+        homePageModelList.add(new HomePageModel(1, R.drawable.banner2 ));
+        homePageModelList.add(new HomePageModel(2, "Deal of the Day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(3, "Deal of the Day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(1, R.drawable.banner2 ));
+        homePageModelList.add(new HomePageModel(3, "Deal of the Day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(2, "Deal of the Day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(1, R.drawable.banner2));
 
-        HomePageAdapter adapter= new HomePageAdapter(homePageModelList);
+        HomePageAdapter adapter = new HomePageAdapter(homePageModelList);
         categoryRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+
     }
 
     @Override
@@ -113,15 +108,21 @@ public class CategoryActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         int id = item.getItemId();
+
         if (id == R.id.main_search_icon) {
+//            todo:search
             return true;
-        }else if (id== android.R.id.home){
+        }else if(id == android.R.id.home){
+//            da category slider
             finish();
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 }
