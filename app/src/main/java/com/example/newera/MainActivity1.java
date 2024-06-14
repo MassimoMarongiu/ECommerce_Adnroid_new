@@ -92,7 +92,7 @@ public class MainActivity1 extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    //main_activity1
+//    barra menu icone
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -106,7 +106,7 @@ public class MainActivity1 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //activity_main_drawer
+    //activity_main_drawer  menu sinistra
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_home) {

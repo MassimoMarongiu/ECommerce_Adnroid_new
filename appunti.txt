@@ -2,8 +2,7 @@ https://www.youtube.com/watch?v=HgsZlFbDEXc&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjN
 
 da fare
 login register
-https://www.youtube.com/watch?v=lpiBuNQDkPs&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=22
-
+https://www.youtube.com/watch?v=lpiBuNQDkPs&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=24
 
 branches github
 Crea un nuovo branch:
@@ -11,7 +10,7 @@ Crea un nuovo branch:
 Esegui il comando per spostarti sul branch di base (ad esempio main o develop):
 bash
 Copia codice
-git checkout main
+git checkout master
 Crea un nuovo branch:
 bash
 Copia codice

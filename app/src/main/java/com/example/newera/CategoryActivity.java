@@ -33,6 +33,7 @@ public class CategoryActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         String title = getIntent().getStringExtra("CategoryName");
         getSupportActionBar().setTitle(title);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         categoryRecyclerView = findViewById(R.id.category_recyclerview);

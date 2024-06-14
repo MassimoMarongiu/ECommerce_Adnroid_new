@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductDescriptionFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tv_product_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Il NOM EM40 è un cellulare di ultima generazione progettato per offrire un'esperienza utente eccezionale. Questo dispositivo combina un design elegante con funzionalità avanzate,  rendendolo ideale per chi cerca sia estetica che prestazioni.
+Il NOM EM40 è la scelta perfetta per chi desidera un cellulare affidabile e potente, capace di soddisfare le esigenze moderne senza compromessi."
+        android:textColor="@color/black" />
+
+</FrameLayout>
