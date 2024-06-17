@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -26,13 +27,19 @@ import com.google.android.material.navigation.NavigationBarView;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
 
-
 public class MainActivity1 extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMain1Binding binding;
+    //Per le icone a destra nella barra oncreateoptionmenu
+    private static final int HOME_FRAGMENT = 0;
+    private static final int CART_FRAGMENT = 1;
+    private static int currentFragment;
+
 
     private FrameLayout frameLayout;
+    private NavigationView navigationView;
+    private ImageView actionbarLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +47,7 @@ public class MainActivity1 extends AppCompatActivity {
 
         binding = ActivityMain1Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        actionbarLogo = findViewById(R.id.actionbar_logo);
         setSupportActionBar(binding.appBarMain1.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -54,7 +61,7 @@ public class MainActivity1 extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = binding.navView;
+        navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -70,19 +77,23 @@ public class MainActivity1 extends AppCompatActivity {
 
 //        fragment_home2
         frameLayout = findViewById(R.id.main_framelayout);
-        setFragment(new HomeFragment());//chiama metodo
+        setFragment(new HomeFragment(), HOME_FRAGMENT);//chiama metodo
     }
+
     //fragment_home
-    private void  setFragment(Fragment fragment){
+    private void setFragment(Fragment fragment, int fragmentNo) {
+        currentFragment = fragmentNo;
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(frameLayout.getId(),fragment);
+        fragmentTransaction.replace(frameLayout.getId(), fragment);
         fragmentTransaction.commit();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_activity1, menu);
+        if (currentFragment == HOME_FRAGMENT) {
+            getMenuInflater().inflate(R.menu.main_activity1, menu);
+        }
         return true;
     }
 
@@ -92,7 +103,8 @@ public class MainActivity1 extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-//    barra menu icone
+
+    //    barra menu icone
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -101,16 +113,30 @@ public class MainActivity1 extends AppCompatActivity {
         } else if (id == R.id.main_notification_icon) {
             return true;
         } else if (id == R.id.main_cart_icon) {
+            myCart();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void myCart() {
+        actionbarLogo.setVisibility(View.GONE);
+        getSupportActionBar().setTitle("My cart");
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        invalidateOptionsMenu();
+        setFragment(new MyCartFragment(), CART_FRAGMENT);
+        navigationView.getMenu().getItem(2).setChecked(true);
     }
 
     //activity_main_drawer  menu sinistra
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_home) {
-        }else if (id == R.id.nav_my_orders) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            actionbarLogo.setVisibility(View.VISIBLE);
+            invalidateOptionsMenu();
+            setFragment(new HomeFragment(), HOME_FRAGMENT);
+        } else if (id == R.id.nav_my_orders) {
             // Handle the navigation action here
             return true;
         } else if (id == R.id.nav_my_rewards) {
@@ -118,6 +144,7 @@ public class MainActivity1 extends AppCompatActivity {
             return true;
         } else if (id == R.id.nav_my_cart) {
             // Handle the navigation action here
+            myCart();
             return true;
         } else if (id == R.id.nav_my_wishlist) {
             // Handle the navigation action here
