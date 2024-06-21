@@ -7,6 +7,7 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorWhiteOpaque">#80ffffff</color>
     <color name="gray">#804E4D4D</color>
+    <color name="background_gray">#80BFBDBD</color>
     <color name="green">#2DD534</color>
     <color name="yellow">#F1DD2B</color>
     <color name="red">#D81155</color>

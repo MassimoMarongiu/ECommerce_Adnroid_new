@@ -18,6 +18,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.newera.databinding.ActivityCategoryBinding;
+import com.example.newera.databinding.ActivityMain1Binding;
+import com.example.newera.databinding.ActivityProductDetailsBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDetailsActivity extends AppCompatActivity {
-    private ActivityCategoryBinding binding;
+    private ActivityProductDetailsBinding binding;
     private ViewPager productImagesViewPager;
     private TabLayout viewpagerIndicator;
     private static boolean ALREADY_ADDED_TO_WISHLIST = false;
@@ -50,14 +52,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
 
         // Configurazione della toolbar
-        binding = ActivityCategoryBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
+        binding = ActivityProductDetailsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         setSupportActionBar(binding.toolbar);
         String title = getIntent().getStringExtra("ProductName");
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 //        immagine prodotto
         productImagesViewPager = findViewById(R.id.product_images_viewpager);
         viewpagerIndicator = findViewById(R.id.view_pager_indicator);

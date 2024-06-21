@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.NewEra.AppBarOverlay"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar

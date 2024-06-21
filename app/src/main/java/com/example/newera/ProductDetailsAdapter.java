@@ -17,13 +17,13 @@ public class ProductDetailsAdapter  extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch(position){
-            case 0:
+            case 0:         //description
                 ProductDescriptionFragment productDescriptionFragment1= new ProductDescriptionFragment();
                 return productDescriptionFragment1;
-            case 1:
+            case 1:     //specification
                 ProductSpecificationFragment productDescriptionFragment= new ProductSpecificationFragment();
                 return productDescriptionFragment;
-            case 2:
+            case 2:     //other detail
                 ProductDescriptionFragment productDescriptionFragment2= new ProductDescriptionFragment();
                 return productDescriptionFragment2;
             default:
