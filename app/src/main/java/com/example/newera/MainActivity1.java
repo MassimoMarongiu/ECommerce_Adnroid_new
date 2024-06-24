@@ -3,12 +3,16 @@ package com.example.newera;
 import static androidx.navigation.fragment.FragmentKt.findNavController;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toolbar;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -38,13 +42,16 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
     private static final int HOME_FRAGMENT = 0;
     private static final int CART_FRAGMENT = 1;
     private static final int ORDERS_FRAGMENT = 2;
+    private static final int REWARD_FRAGMENT = 3;
     private static final int MYWISHLIST_FRAGMENT = 4;
+
     private static int currentFragment =-1;
 
     private FrameLayout frameLayout;
     private NavigationView navigationView;
     private ImageView actionbarLogo;
-
+    private Window window;
+//    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +59,14 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
         binding = ActivityMain1Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         actionbarLogo = findViewById(R.id.actionbar_logo);
+//        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(binding.appBarMain1.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        window=getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 
 //        DrawerLayout drawer = binding.drawerLayout;
@@ -157,7 +168,8 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
 //            return true;
         } else if (id == R.id.nav_my_rewards) {//3
             // Handle the navigation action here
-            return true;
+            gotoFragment("My Rewards",new MyRewardsFragment(),REWARD_FRAGMENT);
+//            return true;
         } else if (id == R.id.nav_my_wishlist) {//4
             // Handle the navigation action here
             gotoFragment("my wishlist",new MyWishlistFragment(),MYWISHLIST_FRAGMENT);
@@ -176,6 +188,14 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
     }
     private void setFragment(Fragment fragment, int fragmentNo) {
         if (fragmentNo != currentFragment) {
+            if (fragmentNo==REWARD_FRAGMENT) {
+                window.setStatusBarColor(Color.parseColor("#3006BA"));
+//                toolbar.setBackgroundColor(Color.parseColor("#3006BA"));
+            }else{
+                window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+//                toolbar.setBackgroundColor(Color.parseColor("#3006BA"));
+
+            }
             currentFragment = fragmentNo;
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
