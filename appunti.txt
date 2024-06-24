@@ -1,5 +1,4 @@
-https://www.youtube.com/watch?v=_IKEftIqzpY&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=35
-
+https://www.youtube.com/watch?v=hpzk1pfdVjo&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=36
 
 da fare
 login register
@@ -31,3 +30,6 @@ Pushare il branch:
 
 Esegui il comando per pushare il branch al repository remoto:
 git push -u origin nome_del_nuovo_branch
+
+
+immagini circolari aggiungere in build gradle kts     implementation("de.hdodenhof:circleimageview:3.1.0")

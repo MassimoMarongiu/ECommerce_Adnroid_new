@@ -44,6 +44,8 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
     private static final int ORDERS_FRAGMENT = 2;
     private static final int REWARD_FRAGMENT = 3;
     private static final int MYWISHLIST_FRAGMENT = 4;
+    private static final int ACCOUNT_FRAGMENT = 5;
+
 
     private static int currentFragment =-1;
 
@@ -172,11 +174,12 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
 //            return true;
         } else if (id == R.id.nav_my_wishlist) {//4
             // Handle the navigation action here
-            gotoFragment("my wishlist",new MyWishlistFragment(),MYWISHLIST_FRAGMENT);
+            gotoFragment("My wishlist",new MyWishlistFragment(),MYWISHLIST_FRAGMENT);
 //            return true;
         } else if (id == R.id.nav_my_account) {//5
             // Handle the navigation action here
-            return true;
+            gotoFragment("My account",new MyAccountFragment(),ACCOUNT_FRAGMENT);
+//            return true;
         } else if (id == R.id.nav_sign_out) {//6
             // Handle the navigation action here
             return true;

@@ -47,4 +47,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+//  immagini cricolari
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
 }
