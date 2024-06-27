@@ -1,4 +1,4 @@
-https://www.youtube.com/watch?v=hpzk1pfdVjo&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=36
+https://www.youtube.com/watch?v=HAvB1ec4KPc&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=44
 
 da fare
 login register
@@ -6,30 +6,47 @@ https://www.youtube.com/watch?v=lpiBuNQDkPs&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjN
 
 branches github
 Crea un nuovo branch:
+git checkout -b nome_del_nuovo_branch
+git checkout -b added_address_activity
 
 spostarti sul branch di base (ad esempio main o develop):
 git checkout master
 
-Crea un nuovo branch:
-git checkout -b nome_del_nuovo_branch
 
 Verifica che il nuovo branch sia stato creato e selezionato:
 git branch
 Dovresti vedere un asterisco (*) accanto al nome del nuovo branch.
 
 Committa le modifiche:
+Crea un commit con un messaggio descrittivo:
+git commit -m "Descrizione delle modifiche"
 
 Aggiungi i file modificati al commit:
 git add .
 
-Crea un commit con un messaggio descrittivo:
-Copia codice
-git commit -m "Descrizione delle modifiche"
-
 Pushare il branch:
-
-Esegui il comando per pushare il branch al repository remoto:
 git push -u origin nome_del_nuovo_branch
 
 
+toolbar presa da myorders_activity
+
 immagini circolari aggiungere in build gradle kts     implementation("de.hdodenhof:circleimageview:3.1.0")
+
+
+differenze activity/fragment/adapter
+activity:
+addToWishlistBtn = findViewById(R.id.add_to_wishlist_btn);
+
+
+Intent deliveryIntent= new Intent(ProductDetailsActivity.this,DeliveryActivity.class);
+startActivity(deliveryIntent);
+
+fragment:
+Intent deliveryIntent = new Intent(getContext(),DeliveryActivity.class);
+getContext().startActivity(deliveryIntent);
+
+adapter:
+categoryIcon = itemView.findViewById(R.id.category_icon);
+
+Intent categoryIntent = new Intent(itemView.getContext(), CategoryActivity.class);
+itemView.getContext().startActivity(categoryIntent);
