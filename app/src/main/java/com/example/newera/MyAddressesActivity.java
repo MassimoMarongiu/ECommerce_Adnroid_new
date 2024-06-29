@@ -2,10 +2,13 @@ package com.example.newera;
 
 import static com.example.newera.DeliveryActivity.SELECT_ADDRESS;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -30,8 +33,9 @@ public class MyAddressesActivity extends AppCompatActivity {
     private Button deliverHereBtn;
     private static AddressesAdapter addressesAdapter;
 
+    private ImageView add_new_addressBtn;
 
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,15 @@ public class MyAddressesActivity extends AppCompatActivity {
 
         myAddressesRecyclerView = findViewById(R.id.addresses_recyclerView);
         deliverHereBtn = findViewById(R.id.deliver_here_btn);
+        add_new_addressBtn = findViewById(R.id.add_new_address);
+
+        add_new_addressBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyAddressesActivity.this,AddressActivity.class);
+                startActivity(intent);
+            }
+        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);

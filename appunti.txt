@@ -1,4 +1,4 @@
-https://www.youtube.com/watch?v=HAvB1ec4KPc&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=44
+https://www.youtube.com/watch?v=8lAa2ekVjTQ&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjNboS&index=44
 
 da fare
 login register
@@ -7,7 +7,7 @@ https://www.youtube.com/watch?v=lpiBuNQDkPs&list=PLraJmOvF9eeGyVClKdBaVU6O_XqQjN
 branches github
 Crea un nuovo branch:
 git checkout -b nome_del_nuovo_branch
-git checkout -b added_address_activity
+git checkout -b optimized_recyclerview_and_fixed_soma_issues
 
 spostarti sul branch di base (ad esempio main o develop):
 git checkout master

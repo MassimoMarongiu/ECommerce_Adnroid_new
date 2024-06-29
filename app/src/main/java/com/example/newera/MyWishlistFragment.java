@@ -22,10 +22,6 @@ public class MyWishlistFragment extends Fragment {
 
     private RecyclerView wishlistRecyclerView;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,8 +44,12 @@ public class MyWishlistFragment extends Fragment {
         wishlistModelList.add(new WishlistModel(R.drawable.ciao1, "Pixel 6 ", 1, "3", 45, "€ 199.90", "€ 220.00", "Cash on delivery"));
         wishlistModelList.add(new WishlistModel(R.drawable.ciao1, "Pixel 6 ", 1, "3", 45, "€ 199.90", "€ 220.00", "Cash on delivery"));
         wishlistModelList.add(new WishlistModel(R.drawable.ciao1, "Pixel 6 ", 1, "3", 45, "€ 199.90", "€ 220.00", "Cash on delivery"));
+        wishlistModelList.add(new WishlistModel(R.drawable.ciao5, "Pixel 5 ", 1, "2", 15, "€ 99.90", "€ 100.00", "Cash on delivery"));
+        wishlistModelList.add(new WishlistModel(R.drawable.ciao1, "Pixel 6 ", 1, "3", 45, "€ 199.90", "€ 220.00", "Cash on delivery"));
+        wishlistModelList.add(new WishlistModel(R.drawable.ciao1, "Pixel 6 ", 1, "3", 45, "€ 199.90", "€ 220.00", "Cash on delivery"));
+        wishlistModelList.add(new WishlistModel(R.drawable.ciao1, "Pixel 6 ", 1, "3", 45, "€ 199.90", "€ 220.00", "Cash on delivery"));
 
-        WishlistAdapter wishlistAdapter = new WishlistAdapter(wishlistModelList);
+        WishlistAdapter wishlistAdapter = new WishlistAdapter(wishlistModelList, true);
         wishlistRecyclerView.setAdapter(wishlistAdapter);
         wishlistAdapter.notifyDataSetChanged();
 

@@ -20,7 +20,7 @@ public class GridProductViewAdapter  extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return horizontalProductScrollModelList.size();
     }
 
     @Override
@@ -47,6 +47,7 @@ public class GridProductViewAdapter  extends BaseAdapter {
                     parent.getContext().startActivity(productDetailsIntent);
                 }
             });
+
             ImageView productImage = view.findViewById(R.id.h_s_product_image);
             TextView productTitle = view.findViewById(R.id.h_s_product_title);
             TextView productDescription = view.findViewById(R.id.h_s_product_description);

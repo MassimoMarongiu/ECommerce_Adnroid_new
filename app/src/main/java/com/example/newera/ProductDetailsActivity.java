@@ -49,11 +49,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_product_details);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.product_details_container), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         // Configurazione della toolbar
         binding = ActivityProductDetailsBinding.inflate(getLayoutInflater());

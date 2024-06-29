@@ -1,5 +1,7 @@
 package com.example.newera;
 
+import static com.example.newera.DeliveryActivity.SELECT_ADDRESS;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -45,6 +47,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent addressIntent= new Intent(OrderDetailsActivity.this, MyAddressesActivity.class);
+                addressIntent.putExtra("MODE",SELECT_ADDRESS);
+
                 startActivity(addressIntent);
             }
         });

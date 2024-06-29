@@ -220,8 +220,8 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
             drawer.closeDrawer(GravityCompat.START);
         } else {
             if (currentFragment == HOME_FRAGMENT) {
+                currentFragment = -1;
                 super.onBackPressed();
-
             } else {
                 actionbarLogo.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
