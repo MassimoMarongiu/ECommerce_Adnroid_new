@@ -51,8 +51,10 @@ public class MyRewardsFragment extends Fragment {
         rewardModelList.add(new RewardModel("Cashback", "till 2nd, June 2022", "GET 20% OFF on any product above € 120.00 and below € 200.00 with this item"));
         rewardModelList.add(new RewardModel("Discount", "till 2nd, June 2022", "GET 20% OFF on any product above € 120.00 and below € 200.00 with this item"));
         rewardModelList.add(new RewardModel("Buy 1 get 1 free", "till 2nd, June 2022", "GET 20% OFF on any product above € 120.00 and below € 200.00 with this item"));
-
-        RewardAdapter myRewardAdapter = new RewardAdapter(rewardModelList);
+//tut 47 redeem button->connesso rewardAdapter e productdetailsactivity
+        RewardAdapter myRewardAdapter = new RewardAdapter(rewardModelList,false);
+//tut 47 end
+//        RewardAdapter myRewardAdapter = new RewardAdapter(rewardModelList);
         rewardRecyclerView.setAdapter(myRewardAdapter);
         myRewardAdapter.notifyDataSetChanged();
         return view;

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "503667242276",
+    "project_id": "newera-4aee0",
+    "storage_bucket": "newera-4aee0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503667242276:android:689f92fb3fd09d813b6fb1",
+        "android_client_info": {
+          "package_name": "com.example.newera"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTcEXjYEx_5GQ9nV9iHlqfoNh_liAEvng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

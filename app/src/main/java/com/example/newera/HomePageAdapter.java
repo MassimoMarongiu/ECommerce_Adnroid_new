@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -118,10 +119,11 @@ public class HomePageAdapter extends RecyclerView.Adapter {
     private class BannerSlideViewholder extends RecyclerView.ViewHolder {
 
         private ViewPager bannerSliderViewPager;
-        private int currentPage = 2;
+        private int currentPage ;
         private Timer timer;
         final private long DELAY_TIME = 3000;
         final private long PERIOD_TIME = 3000;
+        private List<SliderModel> arrangeList; //tut45
 
         public BannerSlideViewholder(@NonNull View itemView) {
             super(itemView);
@@ -130,9 +132,22 @@ public class HomePageAdapter extends RecyclerView.Adapter {
 
 
         public void setBannerSliderViewPager(final List<SliderModel> sliderModelList) {
+//            tut45 per allineare il timer dei 2 slidermodel list
+            currentPage = 2;
+            if(timer !=null ){
+                timer.cancel();
+            }
+            arrangeList = new ArrayList<>();
+            for (int i = 0; i < sliderModelList.size(); i++) {
+                arrangeList.add(i,sliderModelList.get(i));
+            }
+            arrangeList.add(0,sliderModelList.get(sliderModelList.size()-2));
+            arrangeList.add(1,sliderModelList.get(sliderModelList.size()-1));
+            arrangeList.add(sliderModelList.get(0));
+            arrangeList.add(sliderModelList.get(1));
 
-
-            SliderAdapter sliderAdapter = new SliderAdapter(sliderModelList);
+            SliderAdapter sliderAdapter = new SliderAdapter(arrangeList);
+//            SliderAdapter sliderAdapter = new SliderAdapter(sliderModelList);
             bannerSliderViewPager.setAdapter(sliderAdapter);
             bannerSliderViewPager.setClipToPadding(false);
             bannerSliderViewPager.setPageMargin(20);
@@ -160,21 +175,25 @@ public class HomePageAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onPageScrollStateChanged(int state) {
                     if (state == ViewPager.SCROLL_STATE_IDLE) {
-                        pageLooper(sliderModelList);
+                        pageLooper(arrangeList);
+//                        pageLooper(sliderModelList);
                     }
                 }
             };
             bannerSliderViewPager.addOnPageChangeListener(onPageChangeListener);
 
-            startbannerSlideShow(sliderModelList);
+            startbannerSlideShow(arrangeList);
+//            startbannerSlideShow(sliderModelList);
 
             bannerSliderViewPager.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
-                    pageLooper(sliderModelList);
+                    pageLooper(arrangeList);
+//                    pageLooper(sliderModelList);
                     stopbannerSlideShow();
                     if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                        startbannerSlideShow(sliderModelList);
+//                        startbannerSlideShow(sliderModelList);
+                        startbannerSlideShow(arrangeList);
                         view.performClick();
                     }
                     return false;

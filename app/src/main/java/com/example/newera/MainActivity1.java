@@ -2,14 +2,20 @@ package com.example.newera;
 
 import static androidx.navigation.fragment.FragmentKt.findNavController;
 
+import static com.example.newera.RegisterActivity.setSignUpFragment;
+
+import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toolbar;
@@ -45,15 +51,18 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
     private static final int REWARD_FRAGMENT = 3;
     private static final int MYWISHLIST_FRAGMENT = 4;
     private static final int ACCOUNT_FRAGMENT = 5;
+    public static Boolean showCart = false; //tut45
 
 
-    private static int currentFragment =-1;
+    private int currentFragment = -1;//tut45
+//    private static int currentFragment = -1;
 
     private FrameLayout frameLayout;
     private NavigationView navigationView;
     private ImageView actionbarLogo;
     private Window window;
-//    private Toolbar toolbar;
+
+    //    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +76,7 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        window=getWindow();
+        window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 
@@ -94,12 +103,21 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
         navigationView.getMenu().getItem(0).setChecked(true);
 
         frameLayout = findViewById(R.id.main_framelayout);
+
+        if (showCart) {//tut45
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            gotoFragment("My Cart", new MyCartFragment(), 1);
+        } else {
+            setFragment(new HomeFragment(), HOME_FRAGMENT);
+        }
+
         setFragment(new HomeFragment(), HOME_FRAGMENT); // setta l'inizio nella homehome
 //        setFragment(new OrderDetailsFragment(), HOME_FRAGMENT); // setta l'inizio nella homehome
     }
 
     //fragment_home
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         if (currentFragment == HOME_FRAGMENT) {
@@ -109,7 +127,7 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
-       //    barra menu icone
+    //    barra menu icone (icone a destra)
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -118,8 +136,46 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
         } else if (id == R.id.main_notification_icon) {
             return true;
         } else if (id == R.id.main_cart_icon) {
-            gotoFragment("My Cart", new MyCartFragment(), CART_FRAGMENT);
+
+            //tut 46 modal/dialog
+            Dialog signInDialog= new Dialog(MainActivity1.this);
+            signInDialog.setContentView(R.layout.sign_in_dialog);
+            signInDialog.setCancelable(true);
+            signInDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            Button dialogSignInBtn = signInDialog.findViewById(R.id.sign_in_btn);
+            Button dialogSignUpBtn = signInDialog.findViewById(R.id.sign_up_btn);
+
+            Intent registerIntent = new Intent(MainActivity1.this,RegisterActivity.class);
+            Intent loginIntent = new Intent(MainActivity1.this,SignInFragment.class);
+            dialogSignInBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    signInDialog.dismiss();
+                    setSignUpFragment = false;
+                    startActivity(registerIntent);
+                }
+            });
+
+            dialogSignUpBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    signInDialog.dismiss();
+                    setSignUpFragment = true;
+                    startActivity(registerIntent);
+
+                }
+            });
+            signInDialog.show();
+            //tut 46 modal end
+
+//            gotoFragment("My Cart", new MyCartFragment(), CART_FRAGMENT);
             return true;
+        }else if(id== android.R.id.home){//tut45
+            if(showCart){
+                showCart=false;
+                finish();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -145,7 +201,7 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
 //        navigationView.getMenu().getItem(2).setChecked(true);
 //    }
 
-    //activity_main_drawer  menu sinistra
+    //activity_main_drawer  menu a tendina sinistra
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
@@ -158,7 +214,7 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
             System.out.println("nav_home");
         } else if (id == R.id.nav_my_orders) {//1
             // Handle the navigation action here
-            gotoFragment("My Orders", new MyOrdersFragment(),ORDERS_FRAGMENT);
+            gotoFragment("My Orders", new MyOrdersFragment(), ORDERS_FRAGMENT);
             invalidateOptionsMenu();
 //            return true;
         } else if (id == R.id.nav_my_cart) {//2
@@ -170,15 +226,15 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
 //            return true;
         } else if (id == R.id.nav_my_rewards) {//3
             // Handle the navigation action here
-            gotoFragment("My Rewards",new MyRewardsFragment(),REWARD_FRAGMENT);
+            gotoFragment("My Rewards", new MyRewardsFragment(), REWARD_FRAGMENT);
 //            return true;
         } else if (id == R.id.nav_my_wishlist) {//4
             // Handle the navigation action here
-            gotoFragment("My wishlist",new MyWishlistFragment(),MYWISHLIST_FRAGMENT);
+            gotoFragment("My wishlist", new MyWishlistFragment(), MYWISHLIST_FRAGMENT);
 //            return true;
         } else if (id == R.id.nav_my_account) {//5
             // Handle the navigation action here
-            gotoFragment("My account",new MyAccountFragment(),ACCOUNT_FRAGMENT);
+            gotoFragment("My account", new MyAccountFragment(), ACCOUNT_FRAGMENT);
 //            return true;
         } else if (id == R.id.nav_sign_out) {//6
             // Handle the navigation action here
@@ -189,15 +245,15 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     private void setFragment(Fragment fragment, int fragmentNo) {
         if (fragmentNo != currentFragment) {
-            if (fragmentNo==REWARD_FRAGMENT) {
+            if (fragmentNo == REWARD_FRAGMENT) {
                 window.setStatusBarColor(Color.parseColor("#3006BA"));
 //                toolbar.setBackgroundColor(Color.parseColor("#3006BA"));
-            }else{
+            } else {
                 window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
 //                toolbar.setBackgroundColor(Color.parseColor("#3006BA"));
-
             }
             currentFragment = fragmentNo;
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -206,12 +262,14 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
             fragmentTransaction.commit();
         }
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main1);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -223,10 +281,16 @@ public class MainActivity1 extends AppCompatActivity implements NavigationView.O
                 currentFragment = -1;
                 super.onBackPressed();
             } else {
-                actionbarLogo.setVisibility(View.VISIBLE);
-                invalidateOptionsMenu();
-                gotoFragment("My Home", new HomeFragment(), HOME_FRAGMENT);
-                navigationView.getMenu().getItem(0).setChecked(true);
+                if (showCart){ //tut45
+                    showCart = false;
+                    finish();
+                }else{
+                    actionbarLogo.setVisibility(View.VISIBLE);
+                    invalidateOptionsMenu();
+                    gotoFragment("My Home", new HomeFragment(), HOME_FRAGMENT);
+                    navigationView.getMenu().getItem(0).setChecked(true);
+
+                }
             }
         }
     }
